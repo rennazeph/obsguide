@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>Esports Observer Guide</title>
+    <style>
+        /* General Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+        }
+    
+        body {
+            font-family: "Geist Mono";
+            line-height: 1.4;
+            color: #e8e8e8;
+            background-image: linear-gradient(#000, #222);
+            background-size: cover;
+            background-attachment: fixed; 
+        }
+    
+    
+        .container {
+            max-width: 600px; /* Set maximum width */
+            width: 100%; /* Ensure the width can adapt */
+            margin: 0 auto; /* Center the content */
+            padding: 1rem;
+        }
+    
+        h1 {
+            color: #ccc;
+            font-size: 24px;
+            text-align: left;
+            margin: 10px 0;
+        }
+    
+        h2 {
+            color: #9cc6da;
+            font-size: 22px;
+            margin: 10px 0;
+        }
+        h3 {
+            color: #9cc6da;
+            font-size: 18px;
+            margin: 10px 0;
+            font-style: italic;
+            text-align: left;
+        }
+    
+        p, li {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    
+        ul {
+            padding-left: 18px;
+            margin: 5px 0;
+        }
+    
+        .tutorial {
+            margin-bottom: 10px;
+        }
+    
+        /* Code Block Styles */
+        pre {
+            background-color: hsl(0, 17%, 9%);
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13px;
+            margin: 5px 0;
+            white-space: pre-wrap; /* Ensure that long lines wrap */
+            word-wrap: break-word; /* Allow word wrapping if necessary */
+            max-width: 100%; /* Prevent it from exceeding the container's width */
+            box-sizing: border-box; /* Include padding and border in the element's total width */
+        }
+    
+        /* Button Styles */
+        button {
+            cursor: pointer;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 3px;
+            padding: 6px 10px;
+            font-size: 13px;
+            width: 100%;
+            max-width: 200px;
+            margin: 5px 0;
+            display: block;
+            text-align: center;
+            transition: background 0.25s ease;
+        }
+    
+        button:hover {
+            background: #0056b3;
+        }
+    
+        /* Copied State */
+        button.copied {
+            background: #28a745;
+        }
+    
+        button.copied:hover {
+            background: #218838;
+        }
+    
+        /* Mobile and Desktop Adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+    
+            h2 {
+                font-size: 16px;
+            }
+    
+            p, li {
+                font-size: 12px;
+            }
+    
+            pre {
+                font-size: 11px;
+            }
+    
+            button {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Esports Observer Configuration Guide</h1>
+        <p>To set up your Observer, edit the following files:</p>
+
+        <h2>Step 1: Edit game.cfg</h2>
+        <p>1. Launch the game once, then close the client.</p>
+        <p>2. Navigate to:</p>
+        <pre>C:\Riot Games\League of Legends\Config</pre>
+        <p>3. Open <b>game.cfg</b> and add:</p>
+        <pre id="timers-code">[Spectator]
+eSportsNeutralTimers=1</pre>
+        <button id="copy-timers">📋 Copy</button>
+        <p>4. Save the file and set it as Read-Only:</p>
+        <ul>
+            <li>Right-click the file, select <b>Properties</b>.</li>
+            <li>Under <b>General</b>, check <b>Read-Only</b> and click <b>Apply</b>.</li>
+        </ul>
+
+        <h2>Step 2: Edit PersistedSettings.json</h2>
+        <p>1. Open <b>PersistedSettings.json</b> in the same folder.</p>
+        <p>2. Search for:</p>
+        <pre>"name": "Input.ini",
+"sections": [
+{
+    "name": "GameEvents",
+    "settings": [
+</pre>
+        <p>3. Add this code below:</p>
+        <pre id="copy-zoom">{
+    "name": "evtToggleExtendedZoom",
+    "value": "[Ctrl][z]"
+}</pre>
+        <button id="copy-zoom-button">📋 Copy</button>
+        <p>4. Save the file and set it as Read-Only:</p>
+        <ul>
+            <li>Right-click the file, select <b>Properties</b>.</li>
+            <li>Under <b>General</b>, check <b>Read-Only</b> and click <b>Apply</b>.</li>
+        </ul>
+        <h3> Esports Timers are shown when toggled with the Objecting timers Hotkey (Default: N). Use <b> Ctrl + Z </b> to toggle infinite Zoom.</h3>
+    </div>
+
+    <script>
+        // Function to copy content from a code block and update button
+        function copyToClipboard(elementId, buttonId) {
+            const codeBlock = document.getElementById(elementId).innerText.trim();
+            const button = document.getElementById(buttonId);
+
+            // Create a temporary textarea
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeBlock;
+            document.body.appendChild(tempTextArea);
+
+            // Select and copy
+            tempTextArea.select();
+            document.execCommand('copy');
+
+            // Remove the textarea
+            document.body.removeChild(tempTextArea);
+
+            // Update button text and style
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                button.textContent = '📋 Copy';
+                button.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Add event listeners for the buttons
+        document.getElementById('copy-timers').addEventListener('click', function () {
+            copyToClipboard('timers-code', 'copy-timers');
+        });
+
+        document.getElementById('copy-zoom-button').addEventListener('click', function () {
+            copyToClipboard('copy-zoom', 'copy-zoom-button');
+        });
+    </script>
+</body>
