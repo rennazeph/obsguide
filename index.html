@@ -44,7 +44,7 @@
             font-size: 22px;
             margin: 10px 0;
         }
-        h3 {
+        h3, h4 {
             color: #9cc6da;
             font-size: 18px;
             margin: 10px 0;
@@ -70,13 +70,14 @@
         pre {
             background-color: hsl(0, 17%, 9%);
             padding: 6px;
-            border: 1px solid #ccc;
+            border: 1px inset;
             border-radius: 4px;
+            border-color: #77777700;
             font-size: 13px;
-            margin: 5px 0;
+            margin: 2px 0;
             white-space: pre-wrap; /* Ensure that long lines wrap */
             word-wrap: break-word; /* Allow word wrapping if necessary */
-            max-width: 100%; /* Prevent it from exceeding the container's width */
+            max-width: fit-content; 
             box-sizing: border-box; /* Include padding and border in the element's total width */
         }
     
@@ -84,12 +85,12 @@
         button {
             cursor: pointer;
             border: none;
-            background: #007bff;
-            color: white;
-            border-radius: 3px;
+            background: #2a52be;
+            color: #ccc;
+            border-radius: 20px;
             padding: 6px 10px;
             font-size: 13px;
-            width: 100%;
+            width: 80px;
             max-width: 200px;
             margin: 5px 0;
             display: block;
@@ -98,7 +99,7 @@
         }
     
         button:hover {
-            background: #0056b3;
+            background: #002244;
         }
     
         /* Copied State */
@@ -117,6 +118,12 @@
             }
     
             h2 {
+                font-size: 16px;
+            }
+            h3 {
+                font-size: 16px;
+            }
+            h4 {
                 font-size: 16px;
             }
     
@@ -176,7 +183,7 @@ eSportsNeutralTimers=1</pre>
             <li>Right-click the file, select <b>Properties</b>.</li>
             <li>Under <b>General</b>, check <b>Read-Only</b> and click <b>Apply</b>.</li>
         </ul>
-        <h3> Esports Timers are shown when toggled with the Objecting timers Hotkey (Default: N). Use <b> Ctrl + Z </b> to toggle infinite Zoom.</h3>
+        <h3> Esports Timers are shown when toggled with the Objecting timers Hotkey (Default: N).</h3> <h3>Use <b> Ctrl + Z </b> to toggle infinite Zoom.</h3>
     </div>
 
     <script>
@@ -198,7 +205,7 @@ eSportsNeutralTimers=1</pre>
             document.body.removeChild(tempTextArea);
 
             // Update button text and style
-            button.textContent = 'Copied!';
+            button.textContent = '✔️Copied!';
             button.classList.add('copied');
 
             // Reset button after 2 seconds
