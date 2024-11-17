@@ -1,87 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
     <title>Esports Observer Guide</title>
     <style>
-        /* General Styles */
-        html, body {
+        body {
             margin: 0;
             padding: 0;
-            overflow: hidden; 
-        }
-    
-        body {
-            font-family: "Geist Mono";
-            line-height: 1.4;
+            font-family: "Geist Mono", monospace;
             color: #e8e8e8;
-            background-image: linear-gradient(#000, #222);
-            background-size: cover;
-            background-attachment: fixed; 
+            background: linear-gradient(#000, #222) fixed;
         }
-    
-    
+
         .container {
-            max-width: 600px; /* Set maximum width */
-            width: 100%; /* Ensure the width can adapt */
-            margin: 0 auto; /* Center the content */
+            max-width: 600px;
+            margin: 0 auto;
             padding: 1rem;
         }
-    
+
+        h1, h2 {
+            margin: 10px 0;
+        }
+
         h1 {
             color: #ccc;
             font-size: 24px;
-            text-align: left;
-            margin: 10px 0;
         }
-    
+
         h2 {
             color: #9cc6da;
             font-size: 22px;
-            margin: 10px 0;
         }
-        h3, h4 {
-            color: #9cc6da;
-            font-size: 18px;
-            margin: 10px 0;
+
+        h4 {
+            font-size: 14px;
             font-style: italic;
-            text-align: left;
         }
-    
+
         p, li {
             margin: 5px 0;
             font-size: 14px;
         }
-    
+
         ul {
             padding-left: 18px;
+        }
+
+        .code-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin: 5px 0;
         }
-    
-        .tutorial {
-            margin-bottom: 10px;
-        }
-    
-        /* Code Block Styles */
+
         pre {
-            background-color: hsl(0, 17%, 9%);
+            background: hsl(0, 17%, 9%);
             padding: 6px;
-            border: 1px inset;
             border-radius: 4px;
-            border-color: #77777700;
             font-size: 13px;
-            margin: 2px 0;
-            white-space: pre-wrap; /* Ensure that long lines wrap */
-            word-wrap: break-word; /* Allow word wrapping if necessary */
-            max-width: fit-content; 
-            box-sizing: border-box; /* Include padding and border in the element's total width */
+            margin: 0;
+            flex: 1;
+            max-width: fit-content;
         }
-    
-        /* Button Styles */
+
         button {
             cursor: pointer;
             border: none;
@@ -90,60 +74,35 @@
             border-radius: 20px;
             padding: 6px 10px;
             font-size: 13px;
-            width: 80px;
-            max-width: 200px;
-            margin: 5px 0;
-            display: block;
-            text-align: center;
-            transition: background 0.25s ease;
+            transition: background 0.25s;
+            flex-shrink: 0;
         }
-    
+
         button:hover {
             background: #002244;
         }
-    
-        /* Copied State */
+
         button.copied {
             background: #28a745;
         }
-    
-        button.copied:hover {
-            background: #218838;
-        }
-    
-        /* Mobile and Desktop Adjustments */
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 20px;
             }
-    
-            h2 {
-                font-size: 16px;
-            }
-            h3 {
-                font-size: 16px;
-            }
-            h4 {
-                font-size: 16px;
-            }
-    
-            p, li {
+
+            h2, h4, p, li, pre {
                 font-size: 12px;
             }
-    
-            pre {
-                font-size: 11px;
-            }
-    
+
             button {
                 font-size: 12px;
                 padding: 5px 8px;
             }
         }
     </style>
-    
-    
 </head>
+
 <body>
     <div class="container">
         <h1>Esports Observer Configuration Guide</h1>
@@ -154,14 +113,17 @@
         <p>2. Navigate to:</p>
         <pre>C:\Riot Games\League of Legends\Config</pre>
         <p>3. Open <b>game.cfg</b> and add:</p>
-        <pre id="timers-code">[Spectator]
+        <div class="code-block">
+            <pre id="timers-code">[Spectator]
 eSportsNeutralTimers=1</pre>
-        <button id="copy-timers">📋 Copy</button>
+            <button id="copy-timers">📋 Copy</button>
+        </div>
         <p>4. Save the file and set it as Read-Only:</p>
         <ul>
             <li>Right-click the file, select <b>Properties</b>.</li>
             <li>Under <b>General</b>, check <b>Read-Only</b> and click <b>Apply</b>.</li>
         </ul>
+        <h4>Use the N Hotkey(Default) to toggle the objective timers</h4>
 
         <h2>Step 2: Edit PersistedSettings.json</h2>
         <p>1. Open <b>PersistedSettings.json</b> in the same folder.</p>
@@ -173,55 +135,38 @@ eSportsNeutralTimers=1</pre>
     "settings": [
 </pre>
         <p>3. Add this code below:</p>
-        <pre id="copy-zoom">{
+        <div class="code-block">
+            <pre id="copy-zoom">{
     "name": "evtToggleExtendedZoom",
     "value": "[Ctrl][z]"
 }</pre>
-        <button id="copy-zoom-button">📋 Copy</button>
+            <button id="copy-zoom-button">📋 Copy</button>
+        </div>
         <p>4. Save the file and set it as Read-Only:</p>
         <ul>
             <li>Right-click the file, select <b>Properties</b>.</li>
             <li>Under <b>General</b>, check <b>Read-Only</b> and click <b>Apply</b>.</li>
         </ul>
-        <h3> Esports Timers are shown when toggled with the Objecting timers Hotkey (Default: N).</h3> <h3>Use <b> Ctrl + Z </b> to toggle infinite Zoom.</h3>
+        <h4>Use <i>Ctrl + Z</i> to toggle infinite Zoom.</h4>
     </div>
 
     <script>
-        // Function to copy content from a code block and update button
-        function copyToClipboard(elementId, buttonId) {
-            const codeBlock = document.getElementById(elementId).innerText.trim();
-            const button = document.getElementById(buttonId);
-
-            // Create a temporary textarea
-            const tempTextArea = document.createElement('textarea');
-            tempTextArea.value = codeBlock;
-            document.body.appendChild(tempTextArea);
-
-            // Select and copy
-            tempTextArea.select();
-            document.execCommand('copy');
-
-            // Remove the textarea
-            document.body.removeChild(tempTextArea);
-
-            // Update button text and style
-            button.textContent = '✔️Copied!';
-            button.classList.add('copied');
-
-            // Reset button after 2 seconds
-            setTimeout(() => {
-                button.textContent = '📋 Copy';
-                button.classList.remove('copied');
-            }, 2000);
+        function copyToClipboard(codeId, buttonId) {
+            const code = document.getElementById(codeId).innerText.trim();
+            navigator.clipboard.writeText(code).then(() => {
+                const button = document.getElementById(buttonId);
+                button.textContent = '✔️Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = '📋 Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
         }
 
-        // Add event listeners for the buttons
-        document.getElementById('copy-timers').addEventListener('click', function () {
-            copyToClipboard('timers-code', 'copy-timers');
-        });
-
-        document.getElementById('copy-zoom-button').addEventListener('click', function () {
-            copyToClipboard('copy-zoom', 'copy-zoom-button');
-        });
+        document.getElementById('copy-timers').onclick = () => copyToClipboard('timers-code', 'copy-timers');
+        document.getElementById('copy-zoom-button').onclick = () => copyToClipboard('copy-zoom', 'copy-zoom-button');
     </script>
 </body>
+
+</html>
